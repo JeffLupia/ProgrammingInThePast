@@ -1,0 +1,53 @@
+object CaesarCipher{
+   /* Scala Caesar Cipher by Jeff Lupia */
+  
+   def main(args: Array[String]) {
+      var input: String = "Pack my box with five dozen liquor jugs";
+     	var encryptedStr : String = encrypt(input, 7);
+     	println("Encrypted: " + encrypt(input, 7));
+      println("Decrypted: " + decrypt(encryptedStr, 7));
+      println(" ");
+     	solve(input, 26);
+     
+	}
+  
+  def encrypt(input:String, shiftFactor:Int) : String = {
+    var encrypted: String = input;
+    
+  	encrypted.map(
+      c => {
+        if(c >= 'A' && c <= 'Z'){
+              ('A'.toInt + (c.toInt - ('A'.toInt)+ shiftFactor)%26).toChar;
+        } 
+        else if(c >= 'a' && c <= 'z'){
+              ('a'.toInt + (c.toInt - ('a'.toInt)+ shiftFactor)%26).toChar;
+        }
+        else{
+          c;
+        }
+    	});
+    
+  }
+   def decrypt(input:String, shiftFactor:Int) : String = {
+    var decrypted: String = input;
+    
+  	  decrypted.map(
+      c => {
+        if(c >= 'A' && c <= 'Z'){
+              ('A'.toInt + (c.toInt - ('A'.toInt)- shiftFactor + 26)%26).toChar;
+        } 
+        else if(c >= 'a' && c <= 'z'){
+              ('a'.toInt + (c.toInt - ('a'.toInt)- shiftFactor + 26)%26).toChar;
+        }
+        else{
+          c;
+        }
+    	});
+	}	
+   def solve (input:String, maxShiftValue:Int): Unit = {
+     var shiftValue : Integer = 0;
+     for(shiftValue <- 0 to maxShiftValue){
+       println("Caesar " + (maxShiftValue - shiftValue) +": "+encrypt(input, shiftValue));
+     }
+   }
+}

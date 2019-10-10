@@ -1,0 +1,24 @@
+object cipher {
+String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+def main(args: Array[String]) {
+ var str : String = "MAZZLE DAZZLE" var encrypted : String = "" var decrypted : String = ""
+var iter : Int = 0 var shiftAmount : Int = 26
+println ( str )
+encrypted = encrypt(str , 15) println(encrypted)
+ decrypted = decrypt(encrypted, 3) println(decrypted)
+for (iter <- shiftAmount to 0 by -1) {
+ encrypted = encrypt(str, iter) println("Caesar " + iter + ": " + encrypted) } }
+ def encrypt( str:String, shiftAmt:Int ): String = {
+val result = str.map( (c: Char) => {
+ var x = alphabet.indexOf(c.toUpper)
+ if (x == -1){ 
+	c 
+ } 
+ else{
+	x = x + shiftAmt if (x < 0) {
+	x = x + 26 alphabet((x) % alphabet.size) } else {
+	alphabet((x) % alphabet.size) } } });
+ return result }
+ def decrypt( str:String, shiftAmt:Int ): String = {
+ val result = encrypt(str, -(shiftAmt ))
+return result } }

@@ -1,0 +1,38 @@
+let
+		val input := "Pack my box with five dozen liquor jugs";
+
+		val aMinor := ord #"a";
+		(* 97*)
+		val zMinor := ord #"z";
+		val AMajor := ord #"A";
+		(*65*)
+		val ZMajor := ord #"Z";
+		val count: int := 0
+		val shiftFactor: int := 15
+		val charTemp: char := sub(input, count)
+		val ordValTemp: int := ord charTemp
+		val lowercase: int :=	(((ordValTemp - aMinor + shiftFactor)mod(26)) + AMajor)
+		val uppercase: int :=	(((ordValTemp - AMajor + shiftFactor)mod(26)) + AMajor)
+        val result1: char := chr lowercase;
+        val result2: char := chr upperrcase;
+         val resultList: char list;
+
+fun encrypt (val s: string, val shft: int)
+	    (shft:= shiftFactor)
+	    (s := input
+	    val charList := explode(s)
+		while 
+		    (count < (length charList)) 
+		   
+		   do
+        	 
+        		 if (ordValTemp >= aMinor)
+        		     then 
+        		         (ordValTemp := lowercase)
+        		         (result := chr ordValTemp)
+        		 else
+        		    ordValTemp := uppercase;
+        		    
+    		nth(charList, count)
+    		count := (count+1);
+	end;

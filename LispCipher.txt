@@ -1,0 +1,12 @@
+(
+(defun alter(currentChar shiftVal)
+   (map 'string( lambda tempChar (code-char( shiftVal + (char-code c)))) input)
+)
+
+(defun decipher(input shiftVal)
+   ((map 'string( lambda tempChar (code-char( shiftVal - (char-code c)))) input))
+
+ (encryptedStr (encode input 10)) (decrypted (decipher input 10))
+(let* input (string -upcase "Pack my box with five dozen liquor jugs"))
+
+)
