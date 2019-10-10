@@ -1,0 +1,54 @@
+input$ = "Pack my box with five dozen liquor jugs"
+
+print "Input: ", input$
+print "Encrypted String: ", encrypt$(input$, 1)
+print "Decrypted String: ", decrypt$(encrypt$(input$, 1), 1)
+print " "
+solve(input$, 26)
+sub encrypt$(input$, shiftFactor)
+    encrypt$ = input$
+    index = 0
+    
+    repeat
+    
+         if(mid$(encrypt$, index, 1) >= "A" and mid$(encrypt$, index, 1) <= "Z")  then
+                mid$(encrypt$, index, 1) = chr$(asc("A") + mod((asc(mid$(encrypt$, index, 1)) - asc("A")+ shiftFactor), 26))
+                
+         else if(mid$(encrypt$, index, 1) >= "a" and mid$(encrypt$, index, 1) <= "z") 
+                mid$(encrypt$, index, 1) = chr$(asc("a") + mod((asc(mid$(encrypt$, index, 1)) - asc("a")+ shiftFactor), 26))
+                
+         end if
+         
+        index = index + 1
+    until(index = len(encrypt$))
+  return encrypt$
+end sub
+
+
+sub decrypt$(input$, shiftFactor)
+    decrypt$ = input$
+    index = 0
+    
+    repeat
+    
+         if(mid$(decrypt$, index, 1) >= "A" and mid$(decrypt$, index, 1) <= "Z")  then
+                mid$(decrypt$, index, 1) = chr$(asc("A") + mod((asc(mid$(decrypt$, index, 1)) - asc("A")- shiftFactor +26), 26))
+                
+         else if(mid$(decrypt$, index, 1) >= "a" and mid$(decrypt$, index, 1) <= "z") 
+                mid$(decrypt$, index, 1) = chr$(asc("a") + mod((asc(mid$(decrypt$, index, 1)) - asc("a")- shiftFactor +26), 26))
+                
+         end if
+         
+        index = index + 1
+    until(index = len(decrypt$))
+  return decrypt$
+end sub
+
+sub solve(input$, maxShiftVal)
+    loopCt = 0
+    repeat
+    
+        print "Caesar ", (maxShiftVal - loopCt), ": ", encrypt$(input$, loopCt)
+        loopCt = loopCt + 1
+    until(loopCt > maxShiftVal)
+end sub
